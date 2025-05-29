@@ -1,0 +1,5 @@
+[
+    { "caption": "Helix: Toggle", "command": "helix_toggle" },
+    // { "caption": "Helix: Enable", "command": "helix_enable" },
+    // { "caption": "Helix: Disable", "command": "helix_disable" },
+]
