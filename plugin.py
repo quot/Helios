@@ -77,10 +77,10 @@ def set_mode(newMode: Mode, view: subl.View):
 #############
 
 def clear_selected(view: subl.View):
-    points: List[subl.Point] = []
-    for range in view.sel(): points.append(range.b)
+    caretPoints: List[subl.Point] = []
+    for range in view.sel(): caretPoints.append(range.b)
     view.sel().clear()
-    for point in points: view.sel().add_all(points)
+    view.sel().add_all(caretPoints)
 
 # From Neovintageous
 def is_view(view) -> bool:
@@ -313,6 +313,44 @@ class OpenAboveCommand(splug.TextCommand):
 class GotoFileStartCommand(splug.TextCommand):
     def run(self, edit):
         self.view.run_command(cmd="move_to", args={"to": "bof"})
+
+###########################
+## Selection Manipultaion
+
+class GotoNextParagraphCommand(splug.TextCommand):
+    def run(self, edit):
+        global state
+        if (state["mode"] == Mode.NORMAL): clear_selected(self.view)
+        newSelections: List[subl.Region] = []
+        for curSel in self.view.sel():
+            nextParPoint = self.view.find(pattern="^\n[^\n]", start_pt=(curSel.b+1)).end()-1
+            logger.debug(nextParPoint)
+            if (nextParPoint < 0): nextParPoint = len(self.view)
+            if (nextParPoint == curSel.end()):
+                newSelections.append(subl.Region(a=nextParPoint, b=nextParPoint, xpos=curSel.xpos))
+            else:
+                newSelections.append(subl.Region(a=curSel.a, b=nextParPoint, xpos=curSel.xpos))
+        self.view.sel().clear()
+        self.view.sel().add_all(newSelections)
+        self.view.show(self.view.sel()[0])
+
+class GotoPrevParagraphCommand(splug.TextCommand):
+    def run(self, edit):
+        global state
+        if (state["mode"] == Mode.NORMAL): clear_selected(self.view)
+        newSelections: List[subl.Region] = []
+        for curSel in self.view.sel():
+            nextParPoint = self.view.find(pattern="^\n[^\n]", start_pt=(curSel.b-1), flags=subl.FindFlags.REVERSE).begin()+1
+            logger.debug(nextParPoint)
+            if (nextParPoint < 0): nextParPoint = 0
+            if (nextParPoint == curSel.begin()):
+                newSelections.append(subl.Region(a=nextParPoint, b=nextParPoint, xpos=curSel.xpos))
+            else:
+                newSelections.append(subl.Region(a=curSel.a, b=nextParPoint, xpos=curSel.xpos))
+        self.view.sel().clear()
+        self.view.sel().add_all(newSelections)
+        self.view.show(self.view.sel()[0])
+
 
 ##############
 ## View Mode

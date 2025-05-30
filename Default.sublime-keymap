@@ -64,6 +64,14 @@
     {"keys": ["end"], "command": "goto_line_end", "context": [{"key": "helix_mode", "operand": "normal"}]},
     {"keys": ["end"], "command": "goto_line_end", "context": [{"key": "helix_mode", "operand": "select"}]},
 
+    // TODO: Add mapping for ]p
+    {"keys": ["}"], "command": "goto_next_paragraph", "context": [{"key": "helix_mode", "operand": "normal"}]},
+    {"keys": ["}"], "command": "goto_next_paragraph", "context": [{"key": "helix_mode", "operand": "select"}]},
+
+    // TODO: Add mapping for [p
+    {"keys": ["{"], "command": "goto_prev_paragraph", "context": [{"key": "helix_mode", "operand": "normal"}]},
+    {"keys": ["{"], "command": "goto_prev_paragraph", "context": [{"key": "helix_mode", "operand": "select"}]},
+
     ////////////////////////////////////////
     // Changes
 
@@ -87,6 +95,12 @@
 
     {"keys": ["O"], "command": "open_above", "context": [{"key": "helix_mode", "operand": "normal"}]},
     {"keys": ["O"], "command": "open_above", "context": [{"key": "helix_mode", "operand": "select"}]},
+
+    ////////////////////////////////////////
+    // Selection Manipulation
+
+    // x extend_line_below
+    // X extend_to_line_bounds
 
     ////////////////////////////////////////
     // View Mode
