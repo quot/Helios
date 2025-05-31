@@ -179,9 +179,9 @@ class HelixEventListener(splug.EventListener):
             return False
 
     def on_activated(self, view):
-        set_mode(Mode.NORMAL, view=view)
         global state
         state["pluginEnabled"] = is_view(view)
+        if state["pluginEnabled"]: set_mode(Mode.NORMAL, view=view)
         logger.debug(f"on_activated triggered! PluginEnabled: {state['pluginEnabled']}")
 
     # def on_text_command(self, view, command: str, args: dict):

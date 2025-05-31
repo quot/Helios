@@ -96,6 +96,12 @@
     {"keys": ["O"], "command": "open_above", "context": [{"key": "helix_mode", "operand": "normal"}]},
     {"keys": ["O"], "command": "open_above", "context": [{"key": "helix_mode", "operand": "select"}]},
 
+    {"keys": [">"], "command": "indent", "context": [{"key": "helix_mode", "operand": "normal"}]},
+    {"keys": [">"], "command": "indent", "context": [{"key": "helix_mode", "operand": "select"}]},
+
+    {"keys": ["<"], "command": "unindent", "context": [{"key": "helix_mode", "operand": "normal"}]},
+    {"keys": ["<"], "command": "unindent", "context": [{"key": "helix_mode", "operand": "select"}]},
+
     ////////////////////////////////////////
     // Selection Manipulation
 
