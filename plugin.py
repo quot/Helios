@@ -374,6 +374,42 @@ class GotoPrevParagraphCommand(splug.TextCommand):
         self.view.sel().add_all(newSelections)
         self.view.show(self.view.sel()[0])
 
+class ExtendToLineBounds(splug.TextCommand):
+    def run(self, edit):
+        logger.debug("ExtendToLineBounds triggered")
+        newRegions: List[subl.Region] = []
+        for curReg in self.view.sel():
+            endPoint = curReg.end()
+            if curReg.a != curReg.b and self.view.substr(curReg.end()-1) == '\n':
+                endPoint = curReg.end()-1
+            if curReg.b >= curReg.a:
+                newRegions.append(
+                    subl.Region(
+                        a=self.view.full_line(curReg.a).begin(),
+                        b=self.view.full_line(endPoint).end()))
+            else:
+                newRegions.append(
+                    subl.Region(
+                        a=self.view.full_line(endPoint).end(),
+                        b=self.view.full_line(curReg.b).begin()))
+        self.view.sel().clear()
+        self.view.sel().add_all(newRegions)
+
+class ExtendLineBelowCommand(splug.TextCommand):
+    def run(self, edit):
+        logger.debug("ExtendLineBelowCommand triggered")
+        newRegions: List[subl.Region] = []
+        for curReg in self.view.sel():
+            newReg = subl.Region(
+                    a=self.view.full_line(curReg.begin()).a,
+                    b=self.view.full_line(curReg.end()).b,
+                )
+            if (newReg.a, newReg.b) == (curReg.a, curReg.b):
+                newReg.b = self.view.full_line((curReg.end()+1)).end()
+            newRegions.append(newReg)
+        self.view.sel().clear()
+        self.view.sel().add_all(newRegions)
+
 
 ##############
 ## View Mode

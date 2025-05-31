@@ -100,7 +100,12 @@
     // Selection Manipulation
 
     // x extend_line_below
+    {"keys": ["x"], "command": "extend_line_below", "context": [{"key": "helix_mode", "operand": "normal"}]},
+    {"keys": ["x"], "command": "extend_line_below", "context": [{"key": "helix_mode", "operand": "select"}]},
+
     // X extend_to_line_bounds
+    {"keys": ["X"], "command": "extend_to_line_bounds", "context": [{"key": "helix_mode", "operand": "normal"}]},
+    {"keys": ["X"], "command": "extend_to_line_bounds", "context": [{"key": "helix_mode", "operand": "select"}]},
 
     ////////////////////////////////////////
     // View Mode
