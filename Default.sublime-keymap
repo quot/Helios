@@ -1,120 +1,123 @@
 [
-    ////////////////////////////////////////
-    // Catch unbound keys
+    //////////////////////////////////////////////////////
+    // Catch keys that don't directly map to a command.
 
-    {"keys": ["<character>"], "command": "helix_ignore", "context": [{"key": "helix_mode", "operator": "not_equal", "operand": "insert"}]},
+    {"keys": ["<character>"], "command": "helios_input", "context": [{"key": "helios_mode", "operator": "not_equal", "operand": "insert"}]},
 
-    {"keys": ["left"], "command": "helix_ignore", "context": [{"key": "helix_mode", "operand": "view"}]},
-    {"keys": ["right"], "command": "helix_ignore", "context": [{"key": "helix_mode", "operand": "view"}]},
-    {"keys": ["up"], "command": "helix_ignore", "context": [{"key": "helix_mode", "operand": "view"}]},
-    {"keys": ["down"], "command": "helix_ignore", "context": [{"key": "helix_mode", "operand": "view"}]},
+    {"keys": ["left"], "command": "helios_input", "context": [{"key": "helios_mode", "operand": "view"}]},
+    {"keys": ["right"], "command": "helios_input", "context": [{"key": "helios_mode", "operand": "view"}]},
+    {"keys": ["up"], "command": "helios_input", "context": [{"key": "helios_mode", "operand": "view"}]},
+    {"keys": ["down"], "command": "helios_input", "context": [{"key": "helios_mode", "operand": "view"}]},
 
     // TODO: Backspace, delete, enter, etc
 
     ////////////////////////////////////////
     // Mode Switching
 
-    {"keys": ["i"], "command": "insert_mode", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["v"], "command": "select_mode", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["z"], "command": "view_mode", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["escape"], "command": "normal_mode", "context": [{"key": "helix_mode", "operator": "not_equal", "operand": "normal"}]},
+    {"keys": ["i"], "command": "insert_mode", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["v"], "command": "select_mode", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["z"], "command": "view_mode", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["escape"], "command": "normal_mode", "context": [{"key": "helios_mode", "operator": "not_equal", "operand": "normal"}]},
 
     ////////////////////////////////////////
     // Movement
 
-    // {"keys": ["g", "g"], "command": "goto_file_start", "context": [{"key": "helix_mode", "operand": "normal"}]}, // Fix: First g being inserted in normal mode
+    // {"keys": ["g", "g"], "command": "goto_file_start", "context": [{"key": "helios_mode", "operand": "normal"}]}, // Fix: First g being inserted in normal mode
 
-    {"keys": ["h"], "command": "move_char_left", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["h"], "command": "move_char_left", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["h"], "command": "move_char_left", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["h"], "command": "move_char_left", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["left"], "command": "move_char_left", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["left"], "command": "move_char_left", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["left"], "command": "move_char_left", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["left"], "command": "move_char_left", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["j"], "command": "move_visual_line_down", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["j"], "command": "move_visual_line_down", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["j"], "command": "move_visual_line_down", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["j"], "command": "move_visual_line_down", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["down"], "command": "move_visual_line_down", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["down"], "command": "move_visual_line_down", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["down"], "command": "move_visual_line_down", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["down"], "command": "move_visual_line_down", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["k"], "command": "move_visual_line_up", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["k"], "command": "move_visual_line_up", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["k"], "command": "move_visual_line_up", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["k"], "command": "move_visual_line_up", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["up"], "command": "move_visual_line_up", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["up"], "command": "move_visual_line_up", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["up"], "command": "move_visual_line_up", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["up"], "command": "move_visual_line_up", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["l"], "command": "move_char_right", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["l"], "command": "move_char_right", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["l"], "command": "move_char_right", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["l"], "command": "move_char_right", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["right"], "command": "move_char_right", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["right"], "command": "move_char_right", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["right"], "command": "move_char_right", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["right"], "command": "move_char_right", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["w"], "command": "move_next_word_start", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["w"], "command": "move_next_word_start", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["w"], "command": "move_next_word_start", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["w"], "command": "move_next_word_start", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["b"], "command": "move_prev_word_start", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["b"], "command": "move_prev_word_start", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["b"], "command": "move_prev_word_start", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["b"], "command": "move_prev_word_start", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["super+left"], "command": "goto_line_start", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["super+left"], "command": "goto_line_start", "context": [{"key": "helix_mode", "operand": "select"}]},
-    {"keys": ["home"], "command": "goto_line_start", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["home"], "command": "goto_line_start", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["super+left"], "command": "goto_line_start", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["super+left"], "command": "goto_line_start", "context": [{"key": "helios_mode", "operand": "select"}]},
+    {"keys": ["home"], "command": "goto_line_start", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["home"], "command": "goto_line_start", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["super+right"], "command": "goto_line_end", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["super+right"], "command": "goto_line_end", "context": [{"key": "helix_mode", "operand": "select"}]},
-    {"keys": ["end"], "command": "goto_line_end", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["end"], "command": "goto_line_end", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["super+right"], "command": "goto_line_end", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["super+right"], "command": "goto_line_end", "context": [{"key": "helios_mode", "operand": "select"}]},
+    {"keys": ["end"], "command": "goto_line_end", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["end"], "command": "goto_line_end", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     // TODO: Add mapping for ]p
-    {"keys": ["}"], "command": "goto_next_paragraph", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["}"], "command": "goto_next_paragraph", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["}"], "command": "goto_next_paragraph", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["}"], "command": "goto_next_paragraph", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     // TODO: Add mapping for [p
-    {"keys": ["{"], "command": "goto_prev_paragraph", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["{"], "command": "goto_prev_paragraph", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["{"], "command": "goto_prev_paragraph", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["{"], "command": "goto_prev_paragraph", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     ////////////////////////////////////////
     // Changes
 
-    {"keys": ["d"], "command": "delete_selection", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["d"], "command": "delete_selection", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["d"], "command": "delete_selection", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["d"], "command": "delete_selection", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["c"], "command": "change_selection", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["c"], "command": "change_selection", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["c"], "command": "change_selection", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["c"], "command": "change_selection", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["u"], "command": "undo", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["u"], "command": "undo", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["u"], "command": "undo", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["u"], "command": "undo", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["U"], "command": "redo", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["U"], "command": "redo", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["U"], "command": "redo", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["U"], "command": "redo", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["A"], "command": "insert_at_line_end", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["A"], "command": "insert_at_line_end", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["A"], "command": "insert_at_line_end", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["A"], "command": "insert_at_line_end", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["o"], "command": "open_below", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["o"], "command": "open_below", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["o"], "command": "open_below", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["o"], "command": "open_below", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["O"], "command": "open_above", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["O"], "command": "open_above", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["O"], "command": "open_above", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["O"], "command": "open_above", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": [">"], "command": "indent", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": [">"], "command": "indent", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": [">"], "command": "indent", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": [">"], "command": "indent", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["<"], "command": "unindent", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["<"], "command": "unindent", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["<"], "command": "unindent", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["<"], "command": "unindent", "context": [{"key": "helios_mode", "operand": "select"}]},
+
+    {"keys": ["\""], "command": "palette_register", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["\""], "command": "select_register", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     ////////////////////////////////////////
     // Selection Manipulation
 
     // x extend_line_below
-    {"keys": ["x"], "command": "extend_line_below", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["x"], "command": "extend_line_below", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["x"], "command": "extend_line_below", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["x"], "command": "extend_line_below", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     // X extend_to_line_bounds
-    {"keys": ["X"], "command": "extend_to_line_bounds", "context": [{"key": "helix_mode", "operand": "normal"}]},
-    {"keys": ["X"], "command": "extend_to_line_bounds", "context": [{"key": "helix_mode", "operand": "select"}]},
+    {"keys": ["X"], "command": "extend_to_line_bounds", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["X"], "command": "extend_to_line_bounds", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     ////////////////////////////////////////
     // View Mode
 
-    {"keys": ["z"], "command": "align_view_center", "context": [{"key": "helix_mode", "operand": "view"}]},
+    {"keys": ["z"], "command": "align_view_center", "context": [{"key": "helios_mode", "operand": "view"}]},
 ]
