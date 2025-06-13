@@ -1,9 +1,12 @@
 import sublime_plugin as splug
+
 from Helios.libs.state_control import *
 from Helios.libs.editor_utils import *
 
-###########################
-## Selection Manipultaion
+############################
+## Selection Manipultaion ##
+############################
+# https://docs.helix-editor.com/keymap.html#selection-manipulation
 
 class GotoNextParagraphCommand(splug.TextCommand):
     def run(self, edit):

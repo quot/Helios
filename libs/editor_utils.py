@@ -1,7 +1,5 @@
 import sublime as subl
-import sublime_plugin as splug
 from typing import List
-
 
 #############
 ## Helpers ##

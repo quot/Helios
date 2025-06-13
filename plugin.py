@@ -1,15 +1,12 @@
+# Helix Commands
+from Helios.cmds.helix.modes import *
+from Helios.cmds.helix.movement import *
+from Helios.cmds.helix.changes import *
+from Helios.cmds.helix.selection import *
+from Helios.cmds.helix.view import *
 
-import sublime as subl
-
-# subl.active_window().settings().erase("__helios_enabled")
-
-from Helios.cmds.modes import *
-from Helios.cmds.movement import *
-from Helios.cmds.changes import *
-from Helios.cmds.selection import *
-from Helios.cmds.view import *
-
-# FIX: Toggle not working?
+# Misc Commands
 from Helios.cmds.meta import *
 
+# Event Listeners
 from Helios.libs.events import *

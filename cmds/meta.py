@@ -3,6 +3,10 @@ import sublime_plugin as splug
 
 from Helios.libs.state_control import *
 
+###################
+## Meta Commands ##
+###################
+
 class HeliosToggleCommand(splug.TextCommand):
     def run(self, edit: subl.Edit):
         togglePluginEnabled()

@@ -1,8 +1,7 @@
 import logging
 
 #############
-## Logging ##
-#############
+## Logging
 
 logger = logging.getLogger(__package__)
 logger.propagate = False

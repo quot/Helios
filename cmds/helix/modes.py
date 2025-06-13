@@ -1,5 +1,13 @@
 import sublime_plugin as splug
+
 from Helios.libs.state_control import *
+
+####################
+## Mode Switching ##
+####################
+
+# Mappings from various sections.
+# https://docs.helix-editor.com/keymap.html
 
 class InsertModeCommand(splug.TextCommand):
     def run(self, edit):

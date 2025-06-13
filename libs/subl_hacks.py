@@ -1,6 +1,11 @@
 import sublime_plugin
 import traceback
 
+#######################
+## Hacky Workarounds ##
+#######################
+# If something breaks after a sublime update, it's probably here.
+
 # Command that can only be triggered from a key bind.
 # Adding the command to Default.sublime-commands will make the command
 # avaiable for InputHandlers without showing in the command palette.

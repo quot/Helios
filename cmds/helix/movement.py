@@ -1,6 +1,12 @@
 import sublime_plugin as splug
+
 from Helios.libs.state_control import *
 from Helios.libs.editor_utils import *
+
+##############
+## Movement ##
+##############
+# https://docs.helix-editor.com/keymap.html#movement
 
 # FIX: Moving left and right on single character doesn't move the caret
 class MoveCharLeftCommand(splug.TextCommand):

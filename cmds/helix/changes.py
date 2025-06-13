@@ -1,5 +1,11 @@
 import sublime_plugin as splug
+
 from Helios.libs.state_control import *
+
+#############
+## Changes ##
+#############
+# https://docs.helix-editor.com/keymap.html#changes
 
 class DeleteSelectionCommand(splug.TextCommand):
     def run(self, edit):

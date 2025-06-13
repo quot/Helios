@@ -1,10 +1,16 @@
 [
     { "caption": "Helios: Toggle", "command": "helios_toggle" },
 
+    //////////////////////
+    // Optional Commands
+
     // { "caption": "Helios: Enable", "command": "helios_enable" },
     // { "caption": "Helios: Disable", "command": "helios_disable" },
 
-    // Hidden commands.
-    // These are only here because sublime requires them to have input menus.
+    /////////////////////
+    // Hidden Commands
+    // These are only here because they are required
+    // for sublime to product input menus.
+
     { "caption": "Helios Register Picker", "command": "palette_register"},
 ]

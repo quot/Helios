@@ -5,6 +5,10 @@ from Helios.libs.log import *
 from Helios.libs.state_control import *
 from Helios.libs.editor_utils import *
 
+#####################
+## Event Listeners ##
+#####################
+
 def plugin_loaded():
     subl.active_window().settings().erase("__helios_enabled")
     # pass

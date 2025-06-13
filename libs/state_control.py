@@ -1,7 +1,12 @@
 import sublime as subl
+
 from Helios.libs.model import *
 from Helios.libs.log import *
 from Helios.libs.editor_utils import *
+
+######################
+## State Management ##
+######################
 
 settingKeys = {
     "enabled": "__helios_enabled",

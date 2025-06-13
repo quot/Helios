@@ -1,8 +1,11 @@
 import sublime_plugin as splug
+
 from Helios.libs.state_control import *
 
-##############
-## View Mode
+###############
+## View Mode ##
+###############
+# https://docs.helix-editor.com/keymap.html#view-mode
 
 class AlignViewCenterCommand(splug.TextCommand):
     def run(self, edit):
