@@ -112,8 +112,9 @@
     {"keys": ["\""], "command": "select_register", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["\""], "command": "select_register", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["y"], "command": "yank", "context": [{"key": "helios_mode", "operand": "normal"}]},
-    {"keys": ["y"], "command": "yank", "context": [{"key": "helios_mode", "operand": "select"}]},
+    // `yank` is also a built-in ST command, so a unique name is used here.
+    {"keys": ["y"], "command": "helios_yank", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["y"], "command": "helios_yank", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     ////////////////////////////////////////
     // Selection Manipulation

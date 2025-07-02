@@ -83,3 +83,11 @@ class PasteBeforeCommand(splug.TextCommand):
                     self.view.insert(edit, self.view.full_line(viewSel[i].begin()).begin(), registerContent[i])
                 else:
                     self.view.insert(edit, viewSel[i].begin(), registerContent[i])
+
+class HeliosYankCommand(splug.TextCommand):
+    def run(self, edit):
+        selectedContents = []
+        for region in self.view.sel():
+            selectedContents.append(self.view.substr(region))
+        add_to_register("\"", selectedContents)
+
