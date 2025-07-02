@@ -22,7 +22,8 @@
     ////////////////////////////////////////
     // Movement
 
-    // {"keys": ["g", "g"], "command": "goto_file_start", "context": [{"key": "helios_mode", "operand": "normal"}]}, // Fix: First g being inserted in normal mode
+    // FIX: First g being inserted in normal mode
+    // {"keys": ["g", "g"], "command": "goto_file_start", "context": [{"key": "helios_mode", "operand": "normal"}]},
 
     {"keys": ["h"], "command": "move_char_left", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["h"], "command": "move_char_left", "context": [{"key": "helios_mode", "operand": "select"}]},
@@ -96,14 +97,23 @@
     {"keys": ["O"], "command": "open_above", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["O"], "command": "open_above", "context": [{"key": "helios_mode", "operand": "select"}]},
 
+    {"keys": ["p"], "command": "paste_after", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["p"], "command": "paste_after", "context": [{"key": "helios_mode", "operand": "select"}]},
+
+    {"keys": ["P"], "command": "paste_before", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["P"], "command": "paste_before", "context": [{"key": "helios_mode", "operand": "select"}]},
+
     {"keys": [">"], "command": "indent", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": [">"], "command": "indent", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     {"keys": ["<"], "command": "unindent", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["<"], "command": "unindent", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["\""], "command": "palette_register", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["\""], "command": "select_register", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["\""], "command": "select_register", "context": [{"key": "helios_mode", "operand": "select"}]},
+
+    {"keys": ["y"], "command": "yank", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["y"], "command": "yank", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     ////////////////////////////////////////
     // Selection Manipulation

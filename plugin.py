@@ -1,3 +1,6 @@
+# Library Setup
+from Helios.libs.subl_ext.setup import *
+
 # Helix Commands
 from Helios.cmds.helix.modes import *
 from Helios.cmds.helix.movement import *

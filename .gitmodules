@@ -1,0 +1,3 @@
+[submodule "libs/subl_ext"]
+	path = libs/subl_ext
+	url = git@github.com:quot/Sublime-Extended.git

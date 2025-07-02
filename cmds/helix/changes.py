@@ -1,6 +1,8 @@
 import sublime_plugin as splug
 
+from Helios.libs import subl_ext
 from Helios.libs.state_control import *
+from Helios.libs import handlers
 
 #############
 ## Changes ##
@@ -9,8 +11,11 @@ from Helios.libs.state_control import *
 
 class DeleteSelectionCommand(splug.TextCommand):
     def run(self, edit):
+        selectedContents = []
         for region in self.view.sel():
+            selectedContents.append(self.view.substr(region))
             self.view.erase(edit, region)
+        add_to_register("\"", selectedContents)
 
 class ChangeSelectionCommand(splug.TextCommand):
     def run(self, edit):
@@ -40,66 +45,41 @@ class GotoFileStartCommand(splug.TextCommand):
     def run(self, edit):
         self.view.run_command(cmd="move_to", args={"to": "bof"})
 
+class SelectRegisterCommand(subl_ext.ExtendedTextCommand):
+    def run(self, edit, register):
+        select_register(register)
 
+    def input(self, args):
+        return handlers.RegisterInputHandler(self)
 
+class PasteAfterCommand(splug.TextCommand):
+    def run(self, edit):
+        registerContent = get_register_content("\"")
+        if (len(registerContent) > 0):
+            viewSel = self.view.sel()
+            for i in range(0, len(viewSel)):
+                if (str(registerContent[i % len(registerContent)]).endswith("\n")):
+                    if (self.view.substr(viewSel[i].end()-1) == "\n"):
+                        self.view.insert(edit, self.view.full_line(viewSel[i].end()-1).end(), registerContent[i % len(registerContent)])
+                    else:
+                        self.view.insert(edit, self.view.full_line(viewSel[i].end()).end(), registerContent[i % len(registerContent)])
+                elif viewSel[i].size() > 0:
+                    self.view.insert(edit, viewSel[i].end(), registerContent[i % len(registerContent)])
+                else:
+                    self.view.insert(edit, viewSel[i].end()+1, registerContent[i % len(registerContent)])
 
-# def try_eval(str):
-#     try:
-#         return eval(str, {}, {})
-#     except Exception:
-#         return None
+class PasteBeforeCommand(splug.TextCommand):
+    def run(self, edit):
+        global registerData
+        rId = get_register_id("\"")
+        registerContent = []
+        if (rId in registerData):
+            registerContent = registerData[rId]
 
-
-# def eval_expr(orig, i, expr):
-#     x = try_eval(orig) or 0
-
-#     return eval(expr, {"s": orig, "x": x, "i": i, "math": math}, {})
-
-
-# class ExprInputHandler(splug.TextInputHandler):
-#     def __init__(self, view):
-#         self.view = view
-
-#     def placeholder(self):
-#         return "Expression"
-
-#     def initial_text(self):
-#         if len(self.view.sel()) == 1:
-#             return self.view.substr(self.view.sel()[0])
-#         elif self.view.sel()[0].size() == 0:
-#             return "i + 1"
-#         elif try_eval(self.view.substr(self.view.sel()[0])) is not None:
-#             return "x"
-#         else:
-#             return "s"
-
-#     def preview(self, expr):
-#         try:
-#             v = self.view
-#             s = v.sel()
-#             count = len(s)
-#             if count > 5:
-#                 count = 5
-#             results = [repr(eval_expr(v.substr(s[i]), i, expr)) for i in range(count)]
-#             if count != len(s):
-#                 results.append("...")
-#             return ", ".join(results)
-#         except Exception:
-#             return ""
-
-#     def validate(self, expr):
-#         try:
-#             v = self.view
-#             s = v.sel()
-#             for i in range(len(s)):
-#                 eval_expr(v.substr(s[i]), i, expr)
-#             return True
-#         except Exception:
-#             return False
-
-# class PaletteRegisterCommand(subl_hacks.KeyBindTextCommand):
-#     def run(self, edit, expr):
-#         logger.debug("SUCCESS!")
-
-#     def input(self, args):
-#         return ExprInputHandler(self.view)
+        if (len(registerContent) > 0):
+            viewSel = self.view.sel()
+            for i in range(0, len(viewSel)):
+                if (str(registerContent[i % len(registerContent)]).endswith("\n")):
+                    self.view.insert(edit, self.view.full_line(viewSel[i].begin()).begin(), registerContent[i])
+                else:
+                    self.view.insert(edit, viewSel[i].begin(), registerContent[i])

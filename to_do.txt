@@ -1,0 +1,11 @@
+TODO:
+
+- Add `gw` jump to word
+	- Similar plugin: https://github.com/ice9js/ace-jump-sublime
+- Add tutor command
+	- https://github.com/helix-editor/helix/blob/master/runtime/tutor
+- Add commands used in tutor page
+	- Command Mode (colon key)
+		- Quit (:q)
+		- Force Quit (:q!)
+	- Delete single character (d)

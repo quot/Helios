@@ -18,7 +18,7 @@ def plugin_loaded():
 
 class HeliosEventListener(splug.EventListener):
     def on_query_context(self, view: subl.View, contextKey: str, operator: subl.QueryOperator, operand: str, match_all: bool) -> bool:
-        if (isEnabled(view) and contextKey  == "helios_mode"):
+        if (isEnabled(view) and contextKey == "helios_mode"):
             if (operator == subl.QueryOperator.EQUAL):
                 return (str(operand).upper() == str(getMode().name))
             elif (operator == subl.QueryOperator.NOT_EQUAL):
@@ -30,14 +30,19 @@ class HeliosEventListener(splug.EventListener):
 
     def on_activated(self, view):
         activeInView = isEnabled(view) and isView(view)
-        if activeInView: setMode(Mode.NORMAL, view=view)
-        logger.debug(f"on_activated triggered! Enabled for view: {activeInView}")
+        if activeInView:
+            setMode(Mode.NORMAL, view=view)
+        else:
+            cleanView(view)
+        # logger.debug(f"on_activated triggered! Enabled for view: {activeInView}")
 
-    def on_text_command(self, view, command: str, args: dict):
-        return None
+    # def on_text_command(self, view, command: str, args: dict):
+    #     return None
 
-    # def on_post_text_command(self, view, command, args):
-    #     logger.debug("on_post_text_command triggered")
+    def on_post_text_command(self, view, command_name, args):
+        if (not command_name in ["select_register"]):
+            clear_selected_register()
+
 
     # def on_load(self, view):
     #     logger.debug("on_load triggered")

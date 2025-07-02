@@ -10,7 +10,6 @@
     /////////////////////
     // Hidden Commands
     // These are only here because they are required
-    // for sublime to product input menus.
-
-    { "caption": "Helios Register Picker", "command": "palette_register"},
+    // for sublime to create input menus.
+    { "caption": "Registers", "command": "select_register"},
 ]
