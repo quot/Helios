@@ -9,48 +9,48 @@ from Helios.libs.editor_utils import *
 # https://docs.helix-editor.com/keymap.html#movement
 
 # FIX: Moving left and right on single character doesn't move the caret
-class MoveCharLeftCommand(splug.TextCommand):
+class HxMoveCharLeftCommand(splug.TextCommand):
     def run(self, edit):
         global state
         if (getMode() == Mode.NORMAL): clearSelected(self.view)
         self.view.run_command(cmd="move", args={"by": "characters", "forward": False, "word_begin": False, "empty_line": False, "punct_begin": False, "separators": False, "extend": (getMode() == Mode.SELECT)})
 
-class MoveCharRightCommand(splug.TextCommand):
+class HxMoveCharRightCommand(splug.TextCommand):
     def run(self, edit):
         global state
         if (getMode() == Mode.NORMAL): clearSelected(self.view)
         self.view.run_command(cmd="move", args={"by": "characters", "forward": True, "word_begin": False, "empty_line": False, "punct_begin": False, "separators": False, "extend": (getMode() == Mode.SELECT)})
 
-class MoveVisualLineUpCommand(splug.TextCommand):
+class HxMoveVisualLineUpCommand(splug.TextCommand):
     def run(self, edit):
         global state
         if (getMode() == Mode.NORMAL): clearSelected(self.view)
         self.view.run_command(cmd="move", args={"by": "lines", "forward": False, "word_begin": False, "empty_line": False, "punct_begin": False, "separators": False, "extend": (getMode() == Mode.SELECT)})
 
-class MoveVisualLineDownCommand(splug.TextCommand):
+class HxMoveVisualLineDownCommand(splug.TextCommand):
     def run(self, edit):
         global state
         if (getMode() == Mode.NORMAL): clearSelected(self.view)
         self.view.run_command(cmd="move", args={"by": "lines", "forward": True, "word_begin": False, "empty_line": False, "punct_begin": False, "separators": False, "extend": (getMode() == Mode.SELECT)})
 
-class MoveNextWordStartCommand(splug.TextCommand):
+class HxMoveNextWordStartCommand(splug.TextCommand):
     def run(self, edit):
         global state
         if (getMode() == Mode.NORMAL): clearSelected(self.view)
         self.view.run_command(cmd="move", args={"by": "words", "forward": True, "word_begin": True, "empty_line": False, "punct_begin": False, "separators": False, "extend": True})
 
-class MovePrevWordStartCommand(splug.TextCommand):
+class HxMovePrevWordStartCommand(splug.TextCommand):
     def run(self, edit):
         global state
         if (getMode() == Mode.NORMAL): clearSelected(self.view)
         self.view.run_command(cmd="move", args={"by": "words", "forward": False, "word_begin": True, "empty_line": False, "punct_begin": False, "separators": False, "extend": True})
 
-class GotoLineStartCommand(splug.TextCommand):
+class HxGotoLineStartCommand(splug.TextCommand):
     def run(self, edit):
         global state
         self.view.run_command(cmd="move_to", args={"to": "bol", "extend": (getMode() == Mode.SELECT)})
 
-class GotoLineEndCommand(splug.TextCommand):
+class HxGotoLineEndCommand(splug.TextCommand):
     def run(self, edit):
         global state
         self.view.run_command(cmd="move_to", args={"to": "eol", "extend": (getMode() == Mode.SELECT)})

@@ -8,7 +8,7 @@ from Helios.libs.editor_utils import *
 ############################
 # https://docs.helix-editor.com/keymap.html#selection-manipulation
 
-class GotoNextParagraphCommand(splug.TextCommand):
+class HxGotoNextParagraphCommand(splug.TextCommand):
     def run(self, edit):
         global state
         if (getMode() == Mode.NORMAL): clearSelected(self.view)
@@ -24,7 +24,7 @@ class GotoNextParagraphCommand(splug.TextCommand):
         self.view.sel().add_all(newSelections)
         self.view.show(self.view.sel()[0])
 
-class GotoPrevParagraphCommand(splug.TextCommand):
+class HxGotoPrevParagraphCommand(splug.TextCommand):
     def run(self, edit):
         global state
         if (getMode() == Mode.NORMAL): clearSelected(self.view)
@@ -60,7 +60,7 @@ class ExtendToLineBounds(splug.TextCommand):
         self.view.sel().clear()
         self.view.sel().add_all(newRegions)
 
-class ExtendLineBelowCommand(splug.TextCommand):
+class HxExtendLineBelowCommand(splug.TextCommand):
     def run(self, edit):
         newRegions: List[subl.Region] = []
         for curReg in self.view.sel():

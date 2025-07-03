@@ -9,22 +9,22 @@ from Helios.libs.state_control import *
 # Mappings from various sections.
 # https://docs.helix-editor.com/keymap.html
 
-class InsertModeCommand(splug.TextCommand):
+class HxInsertModeCommand(splug.TextCommand):
     def run(self, edit):
         setMode(Mode.INSERT, view = self.view)
 
-class NormalModeCommand(splug.TextCommand):
+class HxNormalModeCommand(splug.TextCommand):
     def run(self, edit):
         setMode(Mode.NORMAL, view = self.view)
 
-class SelectModeCommand(splug.TextCommand):
+class HxSelectModeCommand(splug.TextCommand):
     def run(self, edit):
         setMode(Mode.SELECT, view = self.view)
 
-class ViewModeCommand(splug.TextCommand):
+class HxViewModeCommand(splug.TextCommand):
     def run(self, edit):
         setMode(Mode.VIEW, view = self.view)
 
-class SpaceModeCommand(splug.TextCommand):
+class HxSpaceModeCommand(splug.TextCommand):
     def run(self, edit):
         pass

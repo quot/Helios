@@ -9,7 +9,7 @@ from Helios.libs import handlers
 #############
 # https://docs.helix-editor.com/keymap.html#changes
 
-class DeleteSelectionCommand(splug.TextCommand):
+class HxDeleteSelectionCommand(splug.TextCommand):
     def run(self, edit):
         selectedContents = []
         for region in self.view.sel():
@@ -17,42 +17,42 @@ class DeleteSelectionCommand(splug.TextCommand):
             self.view.erase(edit, region)
         add_to_register("\"", selectedContents)
 
-class ChangeSelectionCommand(splug.TextCommand):
+class HxChangeSelectionCommand(splug.TextCommand):
     def run(self, edit):
         for region in self.view.sel():
             self.view.erase(edit, region)
         setMode(Mode.INSERT, self.view)
 
-class InsertAtLineEndCommand(splug.TextCommand):
+class HxInsertAtLineEndCommand(splug.TextCommand):
     def run(self, edit):
         self.view.run_command(cmd="move_to", args={"to": "eol"})
         setMode(Mode.INSERT, self.view)
 
-class OpenBelowCommand(splug.TextCommand):
+class HxOpenBelowCommand(splug.TextCommand):
     def run(self, edit):
         self.view.run_command(cmd="move_to", args={"to": "eol"})
         self.view.run_command(cmd="insert", args={"characters": "\n"})
         setMode(Mode.INSERT, self.view)
 
-class OpenAboveCommand(splug.TextCommand):
+class HxOpenAboveCommand(splug.TextCommand):
     def run(self, edit):
         self.view.run_command(cmd="move_to", args={"to": "bol"})
         self.view.run_command(cmd="insert", args={"characters": "\n"})
         self.view.run_command(cmd="move", args={"by": "lines", "forward": False})
         setMode(Mode.INSERT, self.view)
 
-class GotoFileStartCommand(splug.TextCommand):
+class HxGotoFileStartCommand(splug.TextCommand):
     def run(self, edit):
         self.view.run_command(cmd="move_to", args={"to": "bof"})
 
-class SelectRegisterCommand(subl_ext.ExtendedTextCommand):
+class HxSelectRegisterCommand(subl_ext.ExtendedTextCommand):
     def run(self, edit, register):
         select_register(register)
 
     def input(self, args):
         return handlers.RegisterInputHandler(self)
 
-class PasteAfterCommand(splug.TextCommand):
+class HxPasteAfterCommand(splug.TextCommand):
     def run(self, edit):
         registerContent = get_register_content("\"")
         if (len(registerContent) > 0):
@@ -68,7 +68,7 @@ class PasteAfterCommand(splug.TextCommand):
                 else:
                     self.view.insert(edit, viewSel[i].end()+1, registerContent[i % len(registerContent)])
 
-class PasteBeforeCommand(splug.TextCommand):
+class HxPasteBeforeCommand(splug.TextCommand):
     def run(self, edit):
         global registerData
         rId = get_register_id("\"")
@@ -84,7 +84,7 @@ class PasteBeforeCommand(splug.TextCommand):
                 else:
                     self.view.insert(edit, viewSel[i].begin(), registerContent[i])
 
-class HeliosYankCommand(splug.TextCommand):
+class HxYankCommand(splug.TextCommand):
     def run(self, edit):
         selectedContents = []
         for region in self.view.sel():
