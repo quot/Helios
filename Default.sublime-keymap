@@ -82,11 +82,11 @@
     {"keys": ["c"], "command": "hx_change_selection", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["c"], "command": "hx_change_selection", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["u"], "command": "hx_undo", "context": [{"key": "helios_mode", "operand": "normal"}]},
-    {"keys": ["u"], "command": "hx_undo", "context": [{"key": "helios_mode", "operand": "select"}]},
+    {"keys": ["u"], "command": "undo", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["u"], "command": "undo", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["U"], "command": "hx_redo", "context": [{"key": "helios_mode", "operand": "normal"}]},
-    {"keys": ["U"], "command": "hx_redo", "context": [{"key": "helios_mode", "operand": "select"}]},
+    {"keys": ["U"], "command": "redo", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["U"], "command": "redo", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     {"keys": ["A"], "command": "hx_insert_at_line_end", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["A"], "command": "hx_insert_at_line_end", "context": [{"key": "helios_mode", "operand": "select"}]},
@@ -103,11 +103,11 @@
     {"keys": ["P"], "command": "hx_paste_before", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["P"], "command": "hx_paste_before", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": [">"], "command": "hx_indent", "context": [{"key": "helios_mode", "operand": "normal"}]},
-    {"keys": [">"], "command": "hx_indent", "context": [{"key": "helios_mode", "operand": "select"}]},
+    {"keys": [">"], "command": "indent", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": [">"], "command": "indent", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    {"keys": ["<"], "command": "hx_unindent", "context": [{"key": "helios_mode", "operand": "normal"}]},
-    {"keys": ["<"], "command": "hx_unindent", "context": [{"key": "helios_mode", "operand": "select"}]},
+    {"keys": ["<"], "command": "unindent", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["<"], "command": "unindent", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     {"keys": ["\""], "command": "hx_select_register", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["\""], "command": "hx_select_register", "context": [{"key": "helios_mode", "operand": "select"}]},
