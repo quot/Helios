@@ -112,9 +112,12 @@
     {"keys": ["\""], "command": "hx_select_register", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["\""], "command": "hx_select_register", "context": [{"key": "helios_mode", "operand": "select"}]},
 
-    // `yank` is also a built-in ST command, so a unique name is used here.
     {"keys": ["y"], "command": "hx_yank", "context": [{"key": "helios_mode", "operand": "normal"}]},
     {"keys": ["y"], "command": "hx_yank", "context": [{"key": "helios_mode", "operand": "select"}]},
+
+    ////////////////////////////////////////
+    // Shell
+
 
     ////////////////////////////////////////
     // Selection Manipulation
@@ -128,7 +131,20 @@
     {"keys": ["X"], "command": "hx_extend_to_line_bounds", "context": [{"key": "helios_mode", "operand": "select"}]},
 
     ////////////////////////////////////////
+    // Search
+
+
+    ////////////////////////////////////////
+    // Minor Modes
+
+    ///////////////
     // View Mode
 
     {"keys": ["z"], "command": "hx_align_view_center", "context": [{"key": "helios_mode", "operand": "view"}]},
+
+    ///////////////
+    // Goto Mode
+
+    {"keys": ["g"], "command": "hx_goto", "context": [{"key": "helios_mode", "operand": "normal"}]},
+    {"keys": ["g"], "command": "hx_goto", "context": [{"key": "helios_mode", "operand": "select"}]},
 ]

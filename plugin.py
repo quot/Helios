@@ -2,14 +2,14 @@
 from Helios.libs.subl_ext.setup import *
 
 # Helix Commands
-from Helios.cmds.helix.modes import *
-from Helios.cmds.helix.movement import *
-from Helios.cmds.helix.changes import *
-from Helios.cmds.helix.selection import *
-from Helios.cmds.helix.view import *
+from Helios.commands.helix.modes import *
+from Helios.commands.helix.movement import *
+from Helios.commands.helix.changes import *
+from Helios.commands.helix.selection import *
+from Helios.commands.helix.view import *
 
 # Misc Commands
-from Helios.cmds.meta import *
+from Helios.commands.meta import *
 
 # Event Listeners
 from Helios.libs.events import *

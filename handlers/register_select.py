@@ -4,6 +4,7 @@ from Helios.libs import subl_ext
 from Helios.libs.state_control import *
 
 registerSelectMenu = []
+
 for k,v in RESERVED_REGISTERS.items():
     # Not all special registers will show in the selection menu.
     if k in ["_", "#", ".", "%", "+", "*"]:
@@ -18,6 +19,3 @@ class RegisterInputHandler(subl_ext.ExtendedListHandler):
             return True
         else:
             return False
-
-    # def confirm(self, text: str):
-    #     logger.debug(f"Confirm value::: {text}")

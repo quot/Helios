@@ -34,7 +34,7 @@ class HeliosEventListener(splug.EventListener):
             setMode(Mode.NORMAL, view=view)
         else:
             cleanView(view)
-        # logger.debug(f"on_activated triggered! Enabled for view: {activeInView}")
+        # log.debug(f"on_activated triggered! Enabled for view: {activeInView}")
 
     # def on_text_command(self, view, command: str, args: dict):
     #     return None
@@ -45,16 +45,16 @@ class HeliosEventListener(splug.EventListener):
 
 
     # def on_load(self, view):
-    #     logger.debug("on_load triggered")
+    #     log.debug("on_load triggered")
 
     # def on_post_save(self, view):
-    #     logger.debug("on_post_save triggered")
+    #     log.debug("on_post_save triggered")
 
     # def on_close(self, view):
-    #     logger.debug("on_close triggered")
+    #     log.debug("on_close triggered")
 
     # def on_deactivated(self, view):
-    #     logger.debug("on_deactivated triggered")
+    #     log.debug("on_deactivated triggered")
 
     # def on_exit(self):
-    #     logger.debug("on_exit triggered")
+    #     log.debug("on_exit triggered")

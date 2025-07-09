@@ -1,12 +1,17 @@
+from types import FunctionType
 import sublime as subl
-from typing import List
+
+from Helios.libs.state_control import *
 
 #############
 ## Helpers ##
 #############
 
+def clear_if_normal(view: subl.View):
+    if (getMode() == Mode.NORMAL): clearSelected(view)
+
 def clearSelected(view: subl.View):
-    caretPoints: List[subl.Point] = []
+    caretPoints: list[subl.Point] = []
     for range in view.sel(): caretPoints.append(range.b)
     view.sel().clear()
     view.sel().add_all(caretPoints)

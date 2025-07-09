@@ -11,4 +11,5 @@
     // Hidden Commands
     // These are only needed for sublime to create input menus.
     { "caption": "Registers", "command": "hx_select_register"},
+    { "caption": "Goto", "command": "hx_goto"},
 ]

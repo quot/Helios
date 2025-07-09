@@ -2,7 +2,7 @@ import sublime_plugin as splug
 
 from Helios.libs import subl_ext
 from Helios.libs.state_control import *
-from Helios.libs import handlers
+from Helios.handlers.register_select import RegisterInputHandler
 
 #############
 ## Changes ##
@@ -41,16 +41,12 @@ class HxOpenAboveCommand(splug.TextCommand):
         self.view.run_command(cmd="move", args={"by": "lines", "forward": False})
         setMode(Mode.INSERT, self.view)
 
-class HxGotoFileStartCommand(splug.TextCommand):
-    def run(self, edit):
-        self.view.run_command(cmd="move_to", args={"to": "bof"})
-
 class HxSelectRegisterCommand(subl_ext.ExtendedTextCommand):
     def run(self, edit, register):
         select_register(register)
 
     def input(self, args):
-        return handlers.RegisterInputHandler(self)
+        return RegisterInputHandler(self)
 
 class HxPasteAfterCommand(splug.TextCommand):
     def run(self, edit):

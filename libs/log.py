@@ -3,11 +3,11 @@ import logging
 #############
 ## Logging
 
-logger = logging.getLogger(__package__)
-logger.propagate = False
-logger.setLevel(logging.DEBUG)
+log = logging.getLogger(__package__)
+log.propagate = False
+log.setLevel(logging.DEBUG)
 
-if not logger.hasHandlers():
+if not log.hasHandlers():
     stream_handler = logging.StreamHandler()
     stream_handler.setFormatter(logging.Formatter('HELIOS.%(levelname)-7s [%(filename)20s:%(lineno)-4d] %(message)s'))
-    logger.addHandler(stream_handler)
+    log.addHandler(stream_handler)

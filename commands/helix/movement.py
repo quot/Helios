@@ -8,6 +8,10 @@ from Helios.libs.editor_utils import *
 ##############
 # https://docs.helix-editor.com/keymap.html#movement
 
+def move_char(region: subl.Region, extend: bool, direction: str, **args) -> subl.Region:
+    log.debug(f"move_char - args: {args}")
+    return region
+
 # FIX: Moving left and right on single character doesn't move the caret
 class HxMoveCharLeftCommand(splug.TextCommand):
     def run(self, edit):

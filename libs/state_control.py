@@ -1,7 +1,6 @@
 import sublime as subl
 
 from Helios.libs.model import *
-from Helios.libs.log import *
 from Helios.libs.editor_utils import *
 
 ###############
@@ -54,14 +53,11 @@ def get_register_content(defaultId: str):
     return registerContent
 
 def add_to_register(defaultId, contents):
-    logger.debug("add_to_register")
     rId = get_register_id(defaultId)
 
     # global reservedRegisters
     global registerData
     registerData[rId] = contents
-    logger.debug(f"Added to register! {rId} -> {registerData.get(rId)}")
-
 
 
 ##################
@@ -89,13 +85,10 @@ def isPluginEnabled() -> bool:
     return bool(subl.active_window().settings().setdefault(SETTING_KEYS["enabled"], True))
 
 def setPluginEnabled(newState: bool):
-    logger.debug(f"window: {subl.active_window().id()}")
     subl.active_window().settings().set(SETTING_KEYS["enabled"], newState)
 
 def togglePluginEnabled():
-    logger.debug(f"window: {subl.active_window().id()}")
     newVal = not isPluginEnabled()
-    logger.debug(f"current::: {isPluginEnabled()} newStatus::: {newVal}")
     setPluginEnabled(newVal)
 
 def cleanView(view: subl.View):
